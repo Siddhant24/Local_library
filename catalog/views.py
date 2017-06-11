@@ -16,11 +16,17 @@ def index(request):
     num_authors=Author.objects.count()  # The 'all()' is implied by default.
     num_genres=Genre.objects.count()
     num_HarryPotter_books=Book.objects.filter(title__contains='Potter').count() 
+    
+    # Number of visits to this view, as counted in the session variable.
+    num_visits=request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits+1
+
     # Render the HTML template index.html with the data in the context variable
     return render(
         request,
         'index.html',
-        context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors,'num_genres':num_genres,'num_HarryPotter_books':num_HarryPotter_books}
+        context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors,
+            'num_visits':num_visits}, # num_visits appended
     )
 from django.views import generic
 
