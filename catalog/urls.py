@@ -13,4 +13,5 @@ urlpatterns = [
 
 urlpatterns += [   
     url(r'^mybooks/$', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+    url(r'^books_on_loan/$', views.AllLoanedBooksListView.as_view(), name='all-borrowed'),
 ]
