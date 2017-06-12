@@ -26,7 +26,7 @@ def index(request):
         request,
         'index.html',
         context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors,
-            'num_visits':num_visits}, # num_visits appended
+            'num_visits':num_visits, 'num_genres':num_genres, 'num_HarryPotter_books':num_HarryPotter_books}, # num_visits appended
     )
 from django.views import generic
 
